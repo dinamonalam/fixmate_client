@@ -1,7 +1,4 @@
-/**
- * Upload an image file to ImgBB
- * Falls back gracefully to high-res Unsplash placeholders if ImgBB API key is unset
- */
+
 export async function uploadToImgBB(file: File): Promise<string> {
   const apiKey = process.env.NEXT_PUBLIC_IMGBB_API_KEY;
 
