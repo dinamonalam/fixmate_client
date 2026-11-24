@@ -171,6 +171,9 @@ export default function MyServicesPage() {
                         <img
                           src={svc.image || 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=100'}
                           alt={svc.title}
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=100';
+                          }}
                           className="w-10 h-10 rounded-xl object-cover shrink-0"
                         />
                         <span className="font-bold text-slate-900 dark:text-white max-w-[220px] truncate">

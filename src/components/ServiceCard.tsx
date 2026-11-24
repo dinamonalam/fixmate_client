@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { Service } from '@/types';
 import { MapPin, User, ArrowRight, Home, Store } from 'lucide-react';
@@ -7,14 +9,19 @@ interface ServiceCardProps {
   service: Service;
 }
 
+const DEFAULT_SERVICE_FALLBACK = 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=600&auto=format&fit=crop';
+
 export default function ServiceCard({ service }: ServiceCardProps) {
+  const [imgSrc, setImgSrc] = useState(service.image || DEFAULT_SERVICE_FALLBACK);
+
   return (
     <div className="flex flex-col h-full bg-white dark:bg-slate-800/90 rounded-2xl border border-slate-200 dark:border-slate-700/80 shadow-sm hover:shadow-xl hover:border-blue-400 dark:hover:border-blue-500/50 transition-all duration-300 overflow-hidden group">
       {/* Image Banner */}
       <div className="relative h-48 w-full overflow-hidden bg-slate-100 dark:bg-slate-900">
         <img
-          src={service.image || 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=600'}
+          src={imgSrc}
           alt={service.title}
+          onError={() => setImgSrc(DEFAULT_SERVICE_FALLBACK)}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
         <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
@@ -37,7 +44,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
 
       {/* Content */}
       <div className="flex flex-col flex-1 p-5">
-        <h3 className="text-lg font-bold text-slate-900 dark:text-white line-clamp-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+        <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white line-clamp-2 min-h-[3rem] group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-snug">
           {service.title}
         </h3>
 

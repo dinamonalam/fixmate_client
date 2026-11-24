@@ -161,6 +161,9 @@ export default function HomePage() {
                     <img
                       src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&auto=format&fit=crop"
                       alt="Certified technician fixing motherboard"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800';
+                      }}
                       className="w-full h-[400px] object-cover hover:scale-105 transition-transform duration-700"
                     />
                   </div>

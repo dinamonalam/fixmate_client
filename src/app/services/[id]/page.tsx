@@ -200,6 +200,9 @@ export default function ServiceDetailsPage() {
                 <img
                   src={service.image || 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800'}
                   alt={service.title}
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800';
+                  }}
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute top-4 left-4 flex gap-2">
