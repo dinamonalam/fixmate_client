@@ -6,6 +6,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import { useTheme } from '@/context/ThemeContext';
 import { Wrench, Menu, X, Sun, Moon, User as UserIcon, LayoutDashboard, LogOut, Settings } from 'lucide-react';
+import UserAvatar from '@/components/UserAvatar';
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -93,11 +94,7 @@ export default function Navbar() {
                 <span className="text-sm font-medium text-slate-800 dark:text-slate-200 max-w-[120px] truncate">
                   {user.name}
                 </span>
-                <img
-                  src={user.image || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100'}
-                  alt={user.name}
-                  className="w-8 h-8 rounded-full object-cover ring-2 ring-blue-500/20"
-                />
+                <UserAvatar name={user.name} image={user.image} size="sm" />
               </button>
 
               {dropdownOpen && (
@@ -204,11 +201,7 @@ export default function Navbar() {
             {user ? (
               <div className="space-y-2">
                 <div className="flex items-center gap-3 px-3 py-2">
-                  <img
-                    src={user.image || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100'}
-                    alt={user.name}
-                    className="w-9 h-9 rounded-full object-cover"
-                  />
+                  <UserAvatar name={user.name} image={user.image} size="md" />
                   <div>
                     <p className="text-sm font-semibold text-slate-900 dark:text-white">{user.name}</p>
                     <span className="text-xs px-2 py-0.5 rounded bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 capitalize font-medium">

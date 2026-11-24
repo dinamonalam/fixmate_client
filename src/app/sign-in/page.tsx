@@ -7,7 +7,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { useAuth } from '@/context/AuthContext';
 import { fetchAPI } from '@/lib/api';
-import { Wrench, Mail, Lock, LogIn, KeyRound } from 'lucide-react';
+import { Wrench, Mail, Lock, LogIn } from 'lucide-react';
 import { toast } from 'sonner';
 
 function SignInContent() {
@@ -20,19 +20,7 @@ function SignInContent() {
   const [password, setPassword] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Quick 1-Click Demo Credentials for Examiners
-  const fillCredentials = (roleType: 'admin' | 'tech' | 'customer') => {
-    if (roleType === 'admin') {
-      setEmail('admin@fixmate.com');
-      setPassword('Admin@123');
-    } else if (roleType === 'tech') {
-      setEmail('tech.rahim@fixmate.com');
-      setPassword('Tech@123');
-    } else {
-      setEmail('customer.arman@fixmate.com');
-      setPassword('Customer@123');
-    }
-  };
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -93,36 +81,7 @@ function SignInContent() {
             </p>
           </div>
 
-          {/* 1-Click Demo Credentials Filler */}
-          <div className="p-3.5 rounded-2xl bg-blue-50/70 dark:bg-blue-950/40 border border-blue-200/60 dark:border-blue-900/60 space-y-2">
-            <div className="flex items-center gap-1.5 text-xs font-bold text-blue-800 dark:text-blue-300">
-              <KeyRound className="w-3.5 h-3.5" />
-              <span>Quick Test Accounts (Click to Fill):</span>
-            </div>
-            <div className="grid grid-cols-3 gap-2">
-              <button
-                type="button"
-                onClick={() => fillCredentials('admin')}
-                className="py-1.5 px-2 rounded-lg bg-white dark:bg-slate-800 text-[11px] font-bold text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:border-blue-500 shadow-sm transition-colors"
-              >
-                Admin
-              </button>
-              <button
-                type="button"
-                onClick={() => fillCredentials('tech')}
-                className="py-1.5 px-2 rounded-lg bg-white dark:bg-slate-800 text-[11px] font-bold text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:border-blue-500 shadow-sm transition-colors"
-              >
-                Technician
-              </button>
-              <button
-                type="button"
-                onClick={() => fillCredentials('customer')}
-                className="py-1.5 px-2 rounded-lg bg-white dark:bg-slate-800 text-[11px] font-bold text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:border-blue-500 shadow-sm transition-colors"
-              >
-                Customer
-              </button>
-            </div>
-          </div>
+
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>

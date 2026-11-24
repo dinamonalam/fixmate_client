@@ -26,6 +26,7 @@ import {
   ChevronRight,
   ShieldAlert,
 } from 'lucide-react';
+import UserAvatar from '@/components/UserAvatar';
 
 export default function DashboardLayout({
   children,
@@ -144,11 +145,7 @@ export default function DashboardLayout({
         {/* User Card inside Sidebar */}
         <div className="p-4 mx-4 mt-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-800/80">
           <div className="flex items-center gap-3">
-            <img
-              src={user.image || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120'}
-              alt={user.name}
-              className="w-10 h-10 rounded-full object-cover ring-2 ring-blue-500/30"
-            />
+            <UserAvatar name={user.name} image={user.image} size="md" />
             <div className="overflow-hidden">
               <p className="text-sm font-bold text-slate-900 dark:text-white truncate">
                 {user.name}
@@ -265,11 +262,7 @@ export default function DashboardLayout({
             </Link>
 
             <div className="flex items-center gap-2.5 pl-2 border-l border-slate-200 dark:border-slate-800">
-              <img
-                src={user.image || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120'}
-                alt={user.name}
-                className="w-9 h-9 rounded-full object-cover ring-2 ring-blue-500/20"
-              />
+              <UserAvatar name={user.name} image={user.image} size="md" />
               <div className="hidden md:block">
                 <p className="text-xs font-bold text-slate-900 dark:text-white leading-tight">
                   {user.name}

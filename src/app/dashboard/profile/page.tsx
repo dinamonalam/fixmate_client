@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { fetchAPI } from '@/lib/api';
 import { uploadToImgBB } from '@/lib/imgbb';
-import { User, Mail, Phone, MapPin, FileText, Upload, Save, ShieldCheck } from 'lucide-react';
+import { User, Mail, Phone, MapPin, FileText, Upload, Save, ShieldCheck, Trash2 } from 'lucide-react';
+import UserAvatar from '@/components/UserAvatar';
 import { toast } from 'sonner';
 
 export default function ProfilePage() {
@@ -84,26 +85,38 @@ export default function ProfilePage() {
         <form onSubmit={handleSubmit} className="space-y-5">
           {/* Avatar Upload */}
           <div className="flex flex-col sm:flex-row items-center gap-5 pb-5 border-b border-slate-100 dark:border-slate-800">
-            <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-blue-500 shadow-md">
-              <img
-                src={imagePreview || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200'}
-                alt="Profile Avatar"
-                className="w-full h-full object-cover"
-              />
+            <div className="relative">
+              <UserAvatar name={name || user?.name} image={imagePreview} size="xl" />
             </div>
             <div className="space-y-2 text-center sm:text-left">
-              <label className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-700 hover:border-blue-500 text-xs font-semibold text-slate-700 dark:text-slate-300 cursor-pointer bg-slate-50 dark:bg-slate-800 transition-colors">
-                <Upload className="w-4 h-4 text-slate-400" />
-                <span>Upload New Photo (ImgBB)</span>
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleFileChange}
-                  className="hidden"
-                />
-              </label>
+              <div className="flex flex-wrap items-center gap-2 justify-center sm:justify-start">
+                <label className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-700 hover:border-blue-500 text-xs font-semibold text-slate-700 dark:text-slate-300 cursor-pointer bg-slate-50 dark:bg-slate-800 transition-colors">
+                  <Upload className="w-4 h-4 text-slate-400" />
+                  <span>Upload Photo (ImgBB)</span>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleFileChange}
+                    className="hidden"
+                  />
+                </label>
+
+                {imagePreview && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setImagePreview('');
+                      setImageFile(null);
+                    }}
+                    className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl border border-rose-200 dark:border-rose-900 text-xs font-semibold text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors"
+                  >
+                    <Trash2 className="w-3.5 h-3.5" />
+                    <span>Remove</span>
+                  </button>
+                )}
+              </div>
               <p className="text-[11px] text-slate-400">
-                Recommended square ratio (JPG, PNG or WebP)
+                Optional profile photo (JPG, PNG or WebP)
               </p>
             </div>
           </div>

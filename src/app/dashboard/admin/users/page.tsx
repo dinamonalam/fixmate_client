@@ -5,6 +5,7 @@ import { User, UserRole } from '@/types';
 import { fetchAPI } from '@/lib/api';
 import { useAuth } from '@/context/AuthContext';
 import { Users, Shield, UserCheck, AlertTriangle } from 'lucide-react';
+import UserAvatar from '@/components/UserAvatar';
 import { toast } from 'sonner';
 
 export default function AdminUsersPage() {
@@ -107,11 +108,7 @@ export default function AdminUsersPage() {
                     <tr key={u._id} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/40">
                       <td className="p-4">
                         <div className="flex items-center gap-3">
-                          <img
-                            src={u.image || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100'}
-                            alt={u.name}
-                            className="w-9 h-9 rounded-full object-cover shrink-0 ring-2 ring-blue-500/20"
-                          />
+                          <UserAvatar name={u.name} image={u.image} size="sm" />
                           <div>
                             <p className="font-bold text-slate-900 dark:text-white">
                               {u.name} {isSelf && <span className="text-[10px] text-blue-500 font-semibold">(You)</span>}

@@ -23,6 +23,7 @@ import {
   User as UserIcon,
 } from 'lucide-react';
 import { toast } from 'sonner';
+import UserAvatar from '@/components/UserAvatar';
 
 export default function ServiceDetailsPage() {
   const params = useParams();
@@ -320,13 +321,11 @@ export default function ServiceDetailsPage() {
                 </span>
 
                 <div className="flex items-center gap-3.5">
-                  <img
-                    src={
-                      technician?.image ||
-                      'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=200'
-                    }
-                    alt={service.technicianName}
-                    className="w-14 h-14 rounded-2xl object-cover ring-2 ring-blue-500/20"
+                  <UserAvatar
+                    name={service.technicianName}
+                    image={technician?.image}
+                    size="lg"
+                    className="rounded-2xl"
                   />
                   <div>
                     <h4 className="text-base font-bold text-slate-900 dark:text-white">
