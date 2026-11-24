@@ -101,8 +101,8 @@ export default function ServiceDetailsPage() {
       return;
     }
 
-    if (problemDescription.trim().length < 20) {
-      toast.error('Problem description must be at least 20 characters long.');
+    if (problemDescription.trim().length < 5) {
+      toast.error('Problem description must be at least 5 characters long.');
       return;
     }
 
@@ -467,10 +467,10 @@ export default function ServiceDetailsPage() {
                   </label>
                   <span
                     className={`text-[11px] ${
-                      problemDescription.trim().length >= 20 ? 'text-emerald-500 font-bold' : 'text-slate-400'
+                      problemDescription.trim().length >= 5 ? 'text-emerald-500 font-bold' : 'text-slate-400'
                     }`}
                   >
-                    {problemDescription.trim().length}/20 chars min
+                    {problemDescription.trim().length >= 5 ? '✓ Ready' : `${problemDescription.trim().length}/5 chars min`}
                   </span>
                 </div>
                 <textarea
@@ -493,8 +493,8 @@ export default function ServiceDetailsPage() {
                 </button>
                 <button
                   type="submit"
-                  disabled={isSubmitting || problemDescription.trim().length < 20}
-                  className="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-md shadow-blue-500/20 disabled:opacity-50"
+                  disabled={isSubmitting}
+                  className="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-md shadow-blue-500/20 disabled:opacity-50 transition-all cursor-pointer"
                 >
                   {isSubmitting ? 'Submitting Request...' : 'Confirm Request'}
                 </button>
