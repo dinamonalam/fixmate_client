@@ -8,9 +8,10 @@ Lets customers find repair services, book a technician, track the job and pay af
 ## Live URL
 https://fixmate-repair.vercel.app/
 
-## Admin Credentials
-- **Email:** admin@fixmate.com
-- **Password:** Admin@123
+## Test Credentials (for Examiner Quick Testing)
+- **Admin:** `admin@fixmate.com` / `Admin@123`
+- **Technician:** `tech.rahim@fixmate.com` / `Tech@123` (8 approved services, active & completed requests)
+- **Customer:** `customer.arman@fixmate.com` / `Customer@123` (active requests & completed bookings with Pay Now)
 
 ## Key Features
 - Homepage with search, latest services and how-it-works section

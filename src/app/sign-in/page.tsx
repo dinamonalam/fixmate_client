@@ -81,7 +81,45 @@ function SignInContent() {
             </p>
           </div>
 
-
+          {/* Quick Test Accounts for Examiner Testing */}
+          <div className="p-3 rounded-2xl bg-blue-50/70 dark:bg-blue-950/40 border border-blue-200/60 dark:border-blue-900/60 space-y-2">
+            <div className="flex items-center justify-between text-xs font-bold text-blue-900 dark:text-blue-300">
+              <span>Quick Test Accounts:</span>
+              <span className="text-[10px] text-blue-600 dark:text-blue-400 font-normal">Click to fill</span>
+            </div>
+            <div className="grid grid-cols-3 gap-1.5">
+              <button
+                type="button"
+                onClick={() => {
+                  setEmail('admin@fixmate.com');
+                  setPassword('Admin@123');
+                }}
+                className="py-1 px-2 rounded-lg bg-white dark:bg-slate-800 text-[11px] font-bold text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:border-blue-500 shadow-sm transition-colors text-center"
+              >
+                Admin
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setEmail('tech.rahim@fixmate.com');
+                  setPassword('Tech@123');
+                }}
+                className="py-1 px-2 rounded-lg bg-white dark:bg-slate-800 text-[11px] font-bold text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:border-blue-500 shadow-sm transition-colors text-center"
+              >
+                Technician
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setEmail('customer.arman@fixmate.com');
+                  setPassword('Customer@123');
+                }}
+                className="py-1 px-2 rounded-lg bg-white dark:bg-slate-800 text-[11px] font-bold text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:border-blue-500 shadow-sm transition-colors text-center"
+              >
+                Customer
+              </button>
+            </div>
+          </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
